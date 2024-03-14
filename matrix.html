@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Matrix Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .header {
+      background-color: #282828;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .header h1 {
+      color: #fff;
+      margin: 0;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .navbar ul li {
+      margin-right: 20px;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 95%;
+      padding: 20px;
+      background-color: #282828;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      color: #ffffff;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"] {
+      width: 100px;
+      height: 30px;
+      font-weight: bold;
+      border: 1px solid black;
+      border-radius: 5px;
+      padding: 5px;
+      font-size: 14px;
+      text-align: center;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    .matrix-container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .matrix {
+      padding: 15px;
+      text-align: center;
+      background-color: #004d40;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .matrix h3 {
+      color: #ffffff;
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .matrix input {
+      color: black;
+      font-weight: bold;
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      text-align: center;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #e2e2e2;
+      outline: none;
+    }
+
+    .buttons-container {
+      display: flexbox;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-weight: bolder;
+      background-color: #61344f;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+      font-size: 15px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      padding: 15px;
+      background-color: #004d40;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: auto;
+      max-height: 200px;
+    }
+
+    .result h3 {
+      color: #333333;
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .error {
+      color: #ff0000;
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .output-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+      grid-gap: 2px;
+      overflow: auto;
+      max-height: 200px;
+    }
+
+    .output-grid span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(192, 227, 227);
+      padding: 5px;
+      margin: 3px;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #333333;
+    }
+
+    .footer {
+      background-color: #282828;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+    }
+
+  
+  </style>
+</head>
+
+<body>
+
+  <!-- <div class="header">
+    <div class="container">
+      <h1>Scientific Calculator</h1>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="matrix.html">Matrix</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div> -->
+
+  <div class="container">
+    <h1>Matrix Calculator</h1>
+    <div class="input-container">
+      <label for="rows">Rows:</label>
+      <input type="number" id="rows" min="1" value="2">
+      <label for="cols">Columns:</label>
+      <input type="number" id="cols" min="1" value="2">
+    </div>
+    <div class="matrix-container">
+      <div class="matrix">
+        <h3>Matrix A</h3>
+        <div id="matrixA"></div>
+      </div>
+      <div class="matrix">
+        <h3>Matrix B</h3>
+        <div id="matrixB"></div>
+      </div>
+    </div>
+    <div class="buttons-container">
+      <button onclick="add()">Add</button>
+      <button onclick="subtract()">Subtract</button>
+      <button onclick="multiply()">Multiply</button>
+      <button onclick="transpose()">Transpose</button>
+      <button onclick="calculateDeterminant()">Determinant</button>
+      <button onclick="calculateInverse()">Inverse</button>
+    </div>
+    <div class="result">
+      <h3>Result</h3>
+      <div id="result"></div>
+    </div>
+    <div id="error" class="error"></div>
+  </div>
+
+  <!-- <div class="footer">
+      <div class="container">
+        <p>Disclaimer: This calculator is provided for educational purposes only. Use at your own risk.</p>
+        <p>&copy; Copyright by VKDEVZ</p>
+        <p class="abo">About Us: VKDEVZ is a team of passionate developers dedicated to creating innovative solutions.</p>
+      </div>
+    </div> -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.1/math.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.1/math.js"></script>
+
+
+  <script>
+    // Store current matrix values
+    var matrixAValues = [];
+    var matrixBValues = [];
+
+    function createMatrixInput(matrixId, rows, cols, values) {
+      var matrix = document.getElementById(matrixId);
+      matrix.innerHTML = '';
+      for (var i = 0; i < rows; i++) {
+        var row = document.createElement('div');
+        row.classList.add('row');
+        for (var j = 0; j < cols; j++) {
+          var input = document.createElement('input');
+          input.type = 'number';
+          if (values && values[i] && values[i][j]) {
+            input.value = values[i][j];
+          }
+          row.appendChild(input);
+        }
+        matrix.appendChild(row);
+      }
+    }
+
+    function updateMatrixValues(matrixId, values) {
+      if (matrixId === 'matrixA') {
+        matrixAValues = values;
+      } else if (matrixId === 'matrixB') {
+        matrixBValues = values;
+      }
+    }
+
+    function getMatrixValues(matrixId) {
+      var matrix = document.getElementById(matrixId);
+      var rows = matrix.getElementsByClassName('row');
+      var values = [];
+      for (var i = 0; i < rows.length; i++) {
+        var cols = rows[i].getElementsByTagName('input');
+        var rowValues = [];
+        for (var j = 0; j < cols.length; j++) {
+          rowValues.push(Number(cols[j].value));
+        }
+        values.push(rowValues);
+      }
+      return values;
+    }
+
+    function displayMatrix(matrixId, matrix) {
+      var matrixElement = document.getElementById(matrixId);
+      matrixElement.innerHTML = '';
+      for (var i = 0; i < matrix.length; i++) {
+        var row = document.createElement('div');
+        row.classList.add('output-grid');
+        for (var j = 0; j < matrix[i].length; j++) {
+          var cell = document.createElement('span');
+          cell.textContent = matrix[i][j];
+          row.appendChild(cell);
+        }
+        matrixElement.appendChild(row);
+      }
+    }
+
+    function showError(message) {
+      var errorElement = document.getElementById('error');
+      errorElement.textContent = message;
+    }
+
+    function add() {
+      var matrixA = getMatrixValues('matrixA');
+      var matrixB = getMatrixValues('matrixB');
+      if (matrixA.length !== matrixB.length || matrixA[0].length !== matrixB[0].length) {
+        showError('Matrices must have the same dimensions for addition.');
+        return;
+      }
+      var result = math.add(matrixA, matrixB);
+      displayMatrix('result', result);
+      showError('');
+    }
+
+    function subtract() {
+      var matrixA = getMatrixValues('matrixA');
+      var matrixB = getMatrixValues('matrixB');
+      if (matrixA.length !== matrixB.length || matrixA[0].length !== matrixB[0].length) {
+        showError('Matrices must have the same dimensions for subtraction.');
+        return;
+      }
+      var result = math.subtract(matrixA, matrixB);
+      displayMatrix('result', result);
+      showError('');
+    }
+
+    function multiply() {
+      var matrixA = getMatrixValues('matrixA');
+      var matrixB = getMatrixValues('matrixB');
+      if (matrixA[0].length !== matrixB.length) {
+        showError('Number of columns in Matrix A must equal the number of rows in Matrix B for multiplication.');
+        return;
+      }
+      var result = math.multiply(matrixA, matrixB);
+      displayMatrix('result', result);
+      showError('');
+    }
+
+    function transpose() {
+      var matrixA = getMatrixValues('matrixA');
+      var result = math.transpose(matrixA);
+      displayMatrix('result', result);
+      showError('');
+    }
+
+    function calculateDeterminant() {
+      var matrixA = getMatrixValues('matrixA');
+      try {
+        var result = math.det(matrixA);
+        displayMatrix('result', [[result]]);
+        showError('');
+      } catch (error) {
+        showError('Determinant calculation is only valid for square matrices.');
+      }
+    }
+
+    function calculateInverse() {
+      var matrixA = getMatrixValues('matrixA');
+      try {
+        var result = math.inv(matrixA);
+        displayMatrix('result', result);
+        showError('');
+      } catch (error) {
+        showError('Inverse calculation is only valid for square matrices.');
+      }
+    }
+
+    // Initialize matrix inputs
+    var rowsInput = document.getElementById('rows');
+    var colsInput = document.getElementById('cols');
+    var matrixAValues = [];
+    var matrixBValues = [];
+    createMatrixInput('matrixA', rowsInput.value, colsInput.value, matrixAValues);
+    createMatrixInput('matrixB', rowsInput.value, colsInput.value, matrixBValues);
+
+    // Update matrix inputs when row or column inputs change
+    rowsInput.addEventListener('input', function () {
+      createMatrixInput('matrixA', rowsInput.value, colsInput.value, matrixAValues);
+      createMatrixInput('matrixB', rowsInput.value, colsInput.value, matrixBValues);
+    });
+
+    colsInput.addEventListener('input', function () {
+      createMatrixInput('matrixA', rowsInput.value, colsInput.value, matrixAValues);
+      createMatrixInput('matrixB', rowsInput.value, colsInput.value, matrixBValues);
+    });
+  </script>
+
+  <script>
+    function createMatrixInput(matrixId, rows, cols) {
+      var matrix = document.getElementById(matrixId);
+      matrix.innerHTML = '';
+      for (var i = 0; i < rows; i++) {
+        var row = document.createElement('div');
+        row.classList.add('row');
+        for (var j = 0; j < cols; j++) {
+          var input = document.createElement('input');
+          input.type = 'number';
+          row.appendChild(input);
+        }
+        matrix.appendChild(row);
+      }
+    }
+
+    function getMatrixValues(matrixId) {
+      var matrix = document.getElementById(matrixId);
+      var rows = matrix.getElementsByClassName('row');
+      var values = [];
+      for (var i = 0; i < rows.length; i++) {
+        var cols = rows[i].getElementsByTagName('input');
+        var rowValues = [];
+        for (var j = 0; j < cols.length; j++) {
+          rowValues.push(Number(cols[j].value));
+        }
+        values.push(rowValues);
+      }
+      return values;
+    }
+
+    function displayMatrix(matrixId, matrix) {
+      var matrixElement = document.getElementById(matrixId);
+      matrixElement.innerHTML = '';
+      for (var i = 0; i < matrix.length; i++) {
+        var row = document.createElement('div');
+        row.classList.add('output-grid');
+        for (var j = 0; j < matrix[i].length; j++) {
+          var cell = document.createElement('span');
+          cell.textContent = matrix[i][j];
+          row.appendChild(cell);
+        }
+        matrixElement.appendChild(row);
+      }
+    }
+
+
+    function showError(message) {
+      var errorElement = document.getElementById('error');
+      errorElement.textContent = message;
+    }
+
+    function add() {
+      var matrixA = getMatrixValues('matrixA');
+      var matrixB = getMatrixValues('matrixB');
+      if (matrixA.length !== matrixB.length || matrixA[0].length !== matrixB[0].length) {
+        showError('Matrices must have the same dimensions for addition.');
+        return;
+      }
+      var result = math.add(matrixA, matrixB);
+      displayMatrix('result', result);
+      showError('');
+    }
+
+    function subtract() {
+      var matrixA = getMatrixValues('matrixA');
+      var matrixB = getMatrixValues('matrixB');
+      if (matrixA.length !== matrixB.length || matrixA[0].length !== matrixB[0].length) {
+        showError('Matrices must have the same dimensions for subtraction.');
+        return;
+      }
+      var result = math.subtract(matrixA, matrixB);
+      displayMatrix('result', result);
+      showError('');
+    }
+
+    function multiply() {
+      var matrixA = getMatrixValues('matrixA');
+      var matrixB = getMatrixValues('matrixB');
+      if (matrixA[0].length !== matrixB.length) {
+        showError('Number of columns in Matrix A must equal the number of rows in Matrix B for multiplication.');
+        return;
+      }
+      var result = math.multiply(matrixA, matrixB);
+      displayMatrix('result', result);
+      showError('');
+    }
+
+    function transpose() {
+      var matrixA = getMatrixValues('matrixA');
+      var result = math.transpose(matrixA);
+      displayMatrix('result', result);
+      showError('');
+    }
+
+    function calculateDeterminant() {
+      var matrixA = getMatrixValues('matrixA');
+      try {
+        var result = math.det(matrixA);
+        displayMatrix('result', [[result]]);
+        showError('');
+      } catch (error) {
+        showError('Determinant calculation is only valid for square matrices.');
+      }
+    }
+
+    function calculateInverse() {
+      var matrixA = getMatrixValues('matrixA');
+      try {
+        var result = math.inv(matrixA);
+        displayMatrix('result', result);
+        showError('');
+      } catch (error) {
+        showError('Inverse calculation is only valid for square matrices.');
+      }
+    }
+
+    // Initialize matrix inputs
+    var rowsInput = document.getElementById('rows');
+    var colsInput = document.getElementById('cols');
+    createMatrixInput('matrixA', rowsInput.value, colsInput.value);
+    createMatrixInput('matrixB', rowsInput.value, colsInput.value);
+
+    // Update matrix inputs when row or column inputs change
+    rowsInput.addEventListener('input', function () {
+      createMatrixInput('matrixA', rowsInput.value, colsInput.value);
+      createMatrixInput('matrixB', rowsInput.value, colsInput.value);
+    });
+
+    colsInput.addEventListener('input', function () {
+      createMatrixInput('matrixA', rowsInput.value, colsInput.value);
+      createMatrixInput('matrixB', rowsInput.value, colsInput.value);
+    });
+  </script>
+
+</body>
+
+</html>
