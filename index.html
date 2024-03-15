@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,41 +12,45 @@
       margin: 0;
       padding: 0;
     }
-    
+
     .header {
       background-color: #282828;
       align-items: center;
-      padding: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
     }
-    
+
     .header h1 {
+      font-size: 30px;
       color: #fff;
       margin: 0;
+      text-align: center;
+      padding-bottom: 16px;
     }
-    
+
     .navbar {
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    
+
     .navbar ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
       display: flex;
     }
-    
+
     .navbar ul li {
       margin-right: 20px;
     }
-    
+
     .navbar ul li a {
       text-decoration: none;
       color: #fff;
       font-weight: bold;
     }
-    
+
     .calculator {
       background-color: #282828;
       border-radius: 20px;
@@ -55,7 +60,7 @@
       width: 300px;
       margin: 20px auto;
     }
-    
+
     .calculator input[type="text"] {
       width: calc(100% - 20px);
       padding: 15px;
@@ -67,7 +72,7 @@
       color: #fff;
       text-align: right;
     }
-    
+
     .calculator button {
       width: 50px;
       height: 50px;
@@ -82,131 +87,136 @@
       transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     }
-    
+
     .calculator button:hover {
       background-color: #00695c;
       transform: translateY(-2px);
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
-    
+
     .row {
       display: flex;
       justify-content: space-between;
     }
-    
+
     .footer {
       background-color: #282828;
       padding: 20px;
       color: #fff;
       text-align: center;
     }
-    
+
     @media only screen and (max-width: 600px) {
       .calculator {
         width: 80%;
         margin-top: 40px;
       }
-      .footer{
-        font-size: 10px;  
-    }
-    .abo {
+
+      .footer {
+        font-size: 10px;
+        margin-top: 40px;
+      }
+
+      .abo {
         display: none;
-    }
+      }
     }
   </style>
 </head>
+
 <body>
 
-<div class="header">
-  <div class="container">
-    <h1>Scientific Calculator</h1>
-    <nav class="navbar">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="matrix.html">Matrix</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
-
-<div class="calculator">
-  <input type="text" id="display" readonly>
-  <div class="row">
-    <button onclick="appendToDisplay('(')">(</button>
-    <button onclick="appendToDisplay(')')">)</button>
-    <button onclick="clearDisplay()" style=" background-color: rgb(255, 81, 0);">C</button>
-    <button onclick="calculate()" style=" background-color: rgba(7, 246, 7, 0.626);" >=</button>
-    
+  <div class="header">
+    <div class="container">
+      <h1>Scientific Calculator</h1>
+      <nav class="navbar">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="matrix.html">Matrix</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 
-  <div class="row">
-    <button onclick="appendToDisplay('Math.sqrt(')">√</button>
-    <button onclick="appendToDisplay('.')">.</button>
-    <button onclick="backspace()" style=" color: rgb(255, 81, 0);" >del</button>
-    <button onclick="appendToDisplay('+')">+</button>
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+    <div class="row">
+      <button onclick="appendToDisplay('(')">(</button>
+      <button onclick="appendToDisplay(')')">)</button>
+      <button onclick="clearDisplay()" style=" background-color: rgb(255, 81, 0);">C</button>
+      <button onclick="calculate()" style=" background-color: rgba(7, 246, 7, 0.626);">=</button>
+
+    </div>
+
+    <div class="row">
+      <button onclick="appendToDisplay('Math.sqrt(')">√</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button onclick="backspace()" style=" color: rgb(255, 81, 0);">del</button>
+      <button onclick="appendToDisplay('+')">+</button>
+    </div>
+
+    <div class="row">
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="appendToDisplay('-')">-</button>
+    </div>
+    <div class="row">
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('*')">&#215;</button>
+    </div>
+    <div class="row">
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+
+      <button onclick="appendToDisplay('/')">&#247;</button>
+    </div>
+    <div class="row">
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="appendToDisplay('Math.sin(')">sin</button>
+      <button onclick="appendToDisplay('Math.cos(')">cos</button>
+      <button onclick="appendToDisplay('Math.tan(')">tan</button>
+    </div>
+
   </div>
 
-  <div class="row">
-    <button onclick="appendToDisplay('7')">7</button>
-    <button onclick="appendToDisplay('8')">8</button>
-    <button onclick="appendToDisplay('9')">9</button>
-    <button onclick="appendToDisplay('-')">-</button>
+  <div class="footer">
+    <div class="container">
+      <p>Disclaimer: This calculator is provided for educational purposes only. Use at your own risk.</p>
+      <p>&copy; Copyright by VKDEVZ</p>
+      <p class="abo">About Us: VKDEVZ is a team of passionate developers dedicated to creating innovative solutions.</p>
+    </div>
   </div>
-  <div class="row">
-    <button onclick="appendToDisplay('4')">4</button>
-    <button onclick="appendToDisplay('5')">5</button>
-    <button onclick="appendToDisplay('6')">6</button>
-    <button onclick="appendToDisplay('*')">&#215;</button>
-  </div>
-  <div class="row">
-    <button onclick="appendToDisplay('1')">1</button>
-    <button onclick="appendToDisplay('2')">2</button>
-    <button onclick="appendToDisplay('3')">3</button>
-    
-    <button onclick="appendToDisplay('/')">&#247;</button>
-  </div>
-  <div class="row">
-    <button onclick="appendToDisplay('0')">0</button>
-    <button onclick="appendToDisplay('Math.sin(')">sin</button>
-    <button onclick="appendToDisplay('Math.cos(')">cos</button>
-    <button onclick="appendToDisplay('Math.tan(')">tan</button>
-  </div>
-  
-</div>
 
-<div class="footer">
-  <div class="container">
-    <p>Disclaimer: This calculator is provided for educational purposes only. Use at your own risk.</p>
-    <p>&copy; Copyright by VKDEVZ</p>
-    <p class="abo">About Us: VKDEVZ is a team of passionate developers dedicated to creating innovative solutions.</p>
-  </div>
-</div>
-
-<script>
-  function appendToDisplay(value) {
-    document.getElementById('display').value += value;
-  }
-  
-  function clearDisplay() {
-    document.getElementById('display').value = '';
-  }
-  
-  function backspace() {
-    var display = document.getElementById('display');
-    display.value = display.value.slice(0, -1);
-  }
-  
-  function calculate() {
-    var display = document.getElementById('display');
-    try {
-      display.value = eval(display.value);
-    } catch(error) {
-      display.value = 'Error';
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
     }
-  }
-</script>
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function backspace() {
+      var display = document.getElementById('display');
+      display.value = display.value.slice(0, -1);
+    }
+
+    function calculate() {
+      var display = document.getElementById('display');
+      try {
+        display.value = eval(display.value);
+      } catch (error) {
+        display.value = 'Error';
+      }
+    }
+  </script>
 
 </body>
+
 </html>

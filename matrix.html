@@ -7,25 +7,28 @@
   <title>Professional Matrix Calculator</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #1e1e1e;
       margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      padding: 0;
     }
+
+    .maincontent {
+      padding: 20px;
+    }
+
 
     .header {
       background-color: #282828;
       align-items: center;
-      padding: 10px;
+      margin-bottom: 30px;
     }
 
     .header h1 {
+      font-size: 30px;
       color: #fff;
       margin: 0;
+      padding-bottom: 16px;
     }
 
     .navbar {
@@ -94,9 +97,12 @@
 
     .matrix-container {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       margin-bottom: 20px;
+      justify-content: space-evenly;
     }
+
+
 
     .matrix {
       padding: 15px;
@@ -131,9 +137,10 @@
 
     .buttons-container {
       display: flexbox;
+      text-align: center;
       flex-wrap: wrap;
       justify-content: space-evenly;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
 
     button {
@@ -151,7 +158,7 @@
     }
 
     button:hover {
-      background-color: #0056b3;
+      background-color: #00b306;
     }
 
     .result {
@@ -164,7 +171,7 @@
     }
 
     .result h3 {
-      color: #333333;
+      color: #fff;
       font-size: 18px;
       margin-bottom: 10px;
       text-align: center;
@@ -182,7 +189,7 @@
       grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
       grid-gap: 2px;
       overflow: auto;
-      max-height: 200px;
+      max-height: auto;
     }
 
     .output-grid span {
@@ -195,6 +202,7 @@
       border-radius: 5px;
       font-size: 16px;
       color: #333333;
+      text-align: center;
     }
 
     .footer {
@@ -204,13 +212,37 @@
       text-align: center;
     }
 
-  
+
+
+    @media only screen and (max-width: 600px) {
+      .calculator {
+        width: 80%;
+        margin-top: 40px;
+      }
+
+
+      .footer {
+        margin-top: 20px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        font-size: 10px;
+      }
+
+      .matrix-container {
+        flex-direction: column;
+      }
+
+      .abo {
+        display: none;
+      }
+    }
   </style>
 </head>
 
+
 <body>
 
-  <!-- <div class="header">
+  <div class="header">
     <div class="container">
       <h1>Scientific Calculator</h1>
       <nav class="navbar">
@@ -222,48 +254,63 @@
         </ul>
       </nav>
     </div>
-  </div> -->
-
-  <div class="container">
-    <h1>Matrix Calculator</h1>
-    <div class="input-container">
-      <label for="rows">Rows:</label>
-      <input type="number" id="rows" min="1" value="2">
-      <label for="cols">Columns:</label>
-      <input type="number" id="cols" min="1" value="2">
-    </div>
-    <div class="matrix-container">
-      <div class="matrix">
-        <h3>Matrix A</h3>
-        <div id="matrixA"></div>
-      </div>
-      <div class="matrix">
-        <h3>Matrix B</h3>
-        <div id="matrixB"></div>
-      </div>
-    </div>
-    <div class="buttons-container">
-      <button onclick="add()">Add</button>
-      <button onclick="subtract()">Subtract</button>
-      <button onclick="multiply()">Multiply</button>
-      <button onclick="transpose()">Transpose</button>
-      <button onclick="calculateDeterminant()">Determinant</button>
-      <button onclick="calculateInverse()">Inverse</button>
-    </div>
-    <div class="result">
-      <h3>Result</h3>
-      <div id="result"></div>
-    </div>
-    <div id="error" class="error"></div>
   </div>
 
-  <!-- <div class="footer">
-      <div class="container">
-        <p>Disclaimer: This calculator is provided for educational purposes only. Use at your own risk.</p>
-        <p>&copy; Copyright by VKDEVZ</p>
-        <p class="abo">About Us: VKDEVZ is a team of passionate developers dedicated to creating innovative solutions.</p>
+  <div class="maincontent">
+
+    <div class="container">
+      <h1>Matrix Calculator</h1>
+      <div class="input-container">
+        <label for="rows">Rows:</label>
+        <input type="number" id="rows" min="1" value="2">
+        <label for="cols">Columns:</label>
+        <input type="number" id="cols" min="1" value="2">
       </div>
-    </div> -->
+
+      <div class="matt">
+
+        <div class="matrix-container">
+          <div class="matrix">
+            <h3>Matrix A</h3>
+            <div id="matrixA"></div>
+          </div>
+          <div class="matrix">
+            <h3>Matrix B</h3>
+            <div id="matrixB"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons-container">
+        <button onclick="add()">Add</button>
+        <button onclick="subtract()">Subtract</button>
+        <button onclick="multiply()">Multiply</button>
+        <button onclick="transpose()">Transpose</button>
+        <button onclick="calculateDeterminant()">Determinant</button>
+        <button onclick="calculateInverse()">Inverse</button>
+        <button onclick="calculateRank()">Rank</button>
+
+      </div>
+
+      <div class="result">
+        <h3>Result</h3>
+        <div id="result"></div>
+      </div>
+
+      <div id="error" class="error"></div>
+    </div>
+
+
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <p>Disclaimer: This calculator is provided for educational purposes only. Use at your own risk.</p>
+      <p>&copy; Copyright by VKDEVZ</p>
+      <p class="abo">About Us: VKDEVZ is a team of passionate developers dedicated to creating innovative solutions.</p>
+    </div>
+  </div>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.1/math.js"></script>
 
@@ -400,6 +447,60 @@
         showError('Inverse calculation is only valid for square matrices.');
       }
     }
+
+    function calculateRank() {
+    const matrixAValues = getMatrixValues('matrixA');
+    const matrix = math.matrix(matrixAValues);
+    const rank = calculateRowEchelonForm(matrix);
+    document.getElementById('result').innerHTML = `<p>Rank: ${rank}</p>`;
+}
+
+function calculateRowEchelonForm(matrix) {
+    let m = matrix.toArray();
+    let lead = 0;
+    let rowCount = m.length;
+    let columnCount = m[0].length;
+    let rank = 0;
+
+    for (let r = 0; r < rowCount; r++) {
+        if (columnCount <= lead) {
+            break;
+        }
+        let i = r;
+        while (m[i][lead] === 0) {
+            i++;
+            if (rowCount === i) {
+                i = r;
+                lead++;
+                if (columnCount === lead) {
+                    return rank;
+                }
+            }
+        }
+        let temp = m[i];
+        m[i] = m[r];
+        m[r] = temp;
+        let val = m[r][lead];
+        for (let j = 0; j < columnCount; j++) {
+            m[r][j] /= val;
+        }
+        for (let i = 0; i < rowCount; i++) {
+            if (i !== r) {
+                val = m[i][lead];
+                for (let j = 0; j < columnCount; j++) {
+                    m[i][j] -= val * m[r][j];
+                }
+            }
+        }
+        lead++;
+        rank++;
+    }
+    return rank;
+}
+
+
+
+
 
     // Initialize matrix inputs
     var rowsInput = document.getElementById('rows');
